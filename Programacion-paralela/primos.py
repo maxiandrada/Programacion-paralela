@@ -3,7 +3,6 @@ from time import time
 from mpi4py import MPI
 import numpy as np
 
-
 def esPrimo(n):
   if n % 2 == 0:
     return False
@@ -15,7 +14,6 @@ def esPrimo(n):
       return False
     
   return True
-
 
 def main1():
   startTime=time()
