@@ -77,7 +77,7 @@ if __name__ == '__main__':
       cantidad = sum(data)
       print("Paralelo: Cantidad de numeros primos entre 2 y "+str(maximo)+" "+str(cantidad))
       print("Secuencial: Cantidad de numeros primos entre 2 y "+str(maximo)+" "+str(cantidadSecuencial))
-      porcentaje =(1-(float(tiempoParalelo)/tiempoParalelo))*100
+      porcentaje =(1-(float(tiempoParalelo)/tiempoSecuencial))*100
       print("El algortimo paralelos es "+str(porcentaje)+"% mas rapido que el secuencial")
 
 
