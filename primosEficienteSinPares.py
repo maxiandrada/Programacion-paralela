@@ -54,7 +54,7 @@ if __name__ == '__main__':
         indiceSuperior = (i+1)*int(maximo/nproc)
       comm.send(indiceInferior, dest=i,tag=1)
       comm.send(indiceSuperior, dest=i, tag=2)
-    for i in xrange(2,1*int(maximo/nproc),2):
+    for i in range(3,1*int(maximo/nproc),2):
       if esPrimo(i):
         cantidad+=1 
 
@@ -67,7 +67,10 @@ if __name__ == '__main__':
   else:
     indiceInferior = comm.recv(source=0,tag=1)
     indiceSuperior = comm.recv(source=0, tag=2)
-    for i in xrange(indiceInferior,indiceSuperior,2):
+    
+    if(indiceInferior%2==0):
+      indiceInferior+=1
+    for i in range(indiceInferior,indiceSuperior,2):
       if(esPrimo(i)):
         cantidad +=1 
     #print("rank "+ str(rank)+ " tiene " + str(cantidad))
