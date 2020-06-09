@@ -24,7 +24,7 @@ def algoritmoSecuencial(MAX):
   startTime=time()
   cantidad = 0
   maximo = MAX
-  for i in range(maximo):
+  for i in range(2,maximo):
     if(esPrimo(i)):
       cantidad+=1
 
@@ -48,7 +48,10 @@ if __name__ == '__main__':
     startTime=time()
     for i in xrange(1,nproc):
       indiceInferior = i*int(maximo/nproc)
-      indiceSuperior = (i+1)*int(maximo/nproc)
+      if(i==maximo):
+        indiceSuperior = maximo
+      else:
+        indiceSuperior = (i+1)*int(maximo/nproc)
       comm.send(indiceInferior, dest=i,tag=1)
       comm.send(indiceSuperior, dest=i, tag=2)
     for i in xrange(2,1*int(maximo/nproc)):
