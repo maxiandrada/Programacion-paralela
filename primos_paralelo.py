@@ -32,7 +32,7 @@ if __name__ == '__main__':
   comm = MPI.COMM_WORLD
   rank = comm.Get_rank()
   nproc = comm.Get_size()
-  maximo = 500000
+  maximo = 1000000
   cantidad = 0
   cantidadSecuencial = 0
   tiempoParalelo = 0
@@ -54,7 +54,6 @@ if __name__ == '__main__':
     
     tiempoParalelo=time()-startTime
     print ("CPU time paralelo " + str(tiempoParalelo))
-    
     print("Ejecutando Algoritmo Secuencial ")
     tiempoSecuencial,cantidadSecuencial = algoritmoSecuencial(maximo)
 
