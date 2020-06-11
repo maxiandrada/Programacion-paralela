@@ -3,7 +3,6 @@ from time import time
 from mpi4py import MPI
 import numpy as np
 
-
 def esPrimo(n):
   if n % 2 == 0:
     return False
@@ -18,7 +17,7 @@ def esPrimo(n):
 
 def algoritmoSecuencial(MAX):
   startTime=time()
-  cantidad = 1
+  cantidad = 1  #Considera al nro 2 como primer primo
   maximo = MAX
   for i in range(3,maximo,2):
     if(esPrimo(i)):
@@ -33,8 +32,8 @@ if __name__ == '__main__':
   comm = MPI.COMM_WORLD
   rank = comm.Get_rank()
   nproc = comm.Get_size()
-  maximo = 100000
-  cantidad = 1
+  maximo = 500000
+  cantidad = 1    #Considera al nro 2 como primero primo
   cantidadSecuencial = 0
   tiempoParalelo = 0
   tiempoSecuencial = 0
@@ -73,9 +72,15 @@ if __name__ == '__main__':
   
   if(data!=None):
       cantidad = sum(data)
-      print("Paralelo: Cantidad de numeros primos entre 2 y "+str(maximo)+" "+str(cantidad))
-      print("Secuencial: Cantidad de numeros primos entre 2 y "+str(maximo)+" "+str(cantidadSecuencial))
-      porcentaje =(1-(float(tiempoParalelo)/tiempoSecuencial))*100
-      print("El algortimo paralelos es "+str(porcentaje)+"% mas rapido que el secuencial")
+      print("Paralelo: Cantidad de numeros primos entre 0 y "+str(maximo)+": "+str(cantidad))
+      print("Secuencial: Cantidad de numeros primos entre 0 y "+str(maximo)+": "+str(cantidadSecuencial))
+      
+      if(tiempoSecuencial<tiempoParalelo):
+        porcentaje =(1 - float(tiempoSecuencial/tiempoParalelo))*100
+        print("El algortimo secuencial es "+str(porcentaje)+"% mas rapido que el paralelo")
+      else:
+        porcentaje =(1 - float(tiempoParalelo/tiempoSecuencial))*100
+        print("El algortimo paralelo es "+str(porcentaje)+"% mas rapido que el secuencial")
+
 
 
