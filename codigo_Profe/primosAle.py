@@ -22,7 +22,7 @@ def esPrimo(n):
 def main1():
   startTime=time()
   for i in range(1000):
-    print (str(i)+" es primo")
+    print (str(i)+" es primo\n")
       
   print ("CPU time " + str(time()-startTime))
 
@@ -39,7 +39,7 @@ def main2():
       if esPrimo(i):
         cantidad+=1
   else:
-    l = np.zeros(maximo, dtype='i')
+    l = np.zeros(self.maximo, dtype='i')
     comm.Recv([l, MPI.INT], source=0)
     for i in l:
       if(esPrimo(i)):
@@ -47,5 +47,6 @@ def main2():
     print("rank "+ str(rank) + " tiene "+str(cant))
 
 if __name__ == '__main__':
-  main1()
-  #main2()
+  self.maximo = 0
+  #main1()
+  main2()

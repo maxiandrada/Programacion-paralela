@@ -1,0 +1,20 @@
+$ mpirun -n 4 -host server,nodo1,nodo2,nodo3 python primos_paralelo.py
+CPU time paralelo 0.154836177826
+CPU time secuencial 0.250844955444
+Paralelo: Cantidad de numeros primos entre 0 y 100000: 9595
+Secuencial: Cantidad de numeros primos entre 0 y 100000: 9592
+El algortimo paralelo es 38.2741512375% mas rapido que el secuencial
+
+$ mpirun -n 4 -host server,nodo1,nodo2,nodo3 python primos_paralelo.py
+CPU time paralelo 0.878131151199
+CPU time secuencial 4.74146199226
+Paralelo: Cantidad de numeros primos entre 0 y 500000: 41538
+Secuencial: Cantidad de numeros primos entre 0 y 500000: 41538
+El algortimo paralelo es 81.4797386833% mas rapido que el secuencial
+
+$ mpirun -n 4 -host server,nodo1,nodo2,nodo3 python primos_paralelo.py
+CPU time paralelo 2.02694511414
+CPU time secuencial 12.775457859
+Paralelo: Cantidad de numeros primos entre 0 y 1000000: 78498
+Secuencial: Cantidad de numeros primos entre 0 y 1000000: 78498
+El algortimo paralelo es 84.1340706807% mas rapido que el secuencial
